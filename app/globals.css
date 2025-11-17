@@ -89,3 +89,12 @@ button:hover {
   0% { background-position: 0% 50%; }
   100% { background-position: 400% 50%; }
 }
+
+/* ===== FUNDO TRANSLÚCIDO INTERNO DO CARD ===== */
+.card-rgb > * {
+  background: rgba(10, 6, 18, 0.45); /* ajuste de transparência */
+  padding: 24px;
+  border-radius: 20px;
+  position: relative;
+  z-index: 2;
+}
