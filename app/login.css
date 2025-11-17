@@ -1,0 +1,106 @@
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  background: #05030a; /* preto premium */
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Ubuntu, sans-serif;
+}
+
+/* ===== LINKS ===== */
+a {
+  color: #b388ff;
+  text-decoration: none;
+}
+a:hover { opacity: .7; }
+
+/* ===== INPUTS ===== */
+input {
+  width: 100%;
+  padding: 15px;
+  border-radius: 12px;
+  margin-top: 6px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #fff;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #bb33ff;
+}
+
+/* ===== BOTÃO ===== */
+button {
+  width: 100%;
+  padding: 15px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #ff00ff, #bb00ff, #7700ff);
+  border: none;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+button:hover {
+  opacity: .85;
+  transform: scale(1.01);
+}
+
+/* ===== CARD COM BORDA RGB ===== */
+.card-rgb {
+  position: relative;
+  border-radius: 22px;
+  padding: 35px;
+  background: rgba(0,0,0,0.45); /* fundo preto translúcido premium */
+  backdrop-filter: blur(18px);
+  overflow: hidden;
+}
+
+.card-rgb::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  border-radius: inherit;
+  background: linear-gradient(
+    120deg,
+    #ff00ff,
+    #ff0099,
+    #cc00ff,
+    #7700ff,
+    #00aaff,
+    #00ffcc,
+    #00ff66
+  );
+  background-size: 300%;
+  animation: rgbFlow 6s linear infinite;
+  -webkit-mask: 
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+}
+
+@keyframes rgbFlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+/* ===== CONTAINER ===== */
+.login-container {
+  max-width: 420px;
+  margin: 80px auto;
+  padding: 20px;
+}
+
+label {
+  font-size: 14px;
+  opacity: 0.9;
