@@ -1,6 +1,8 @@
+import "./globals.css";
+
 export const metadata = {
-  title: "Dark Aurora Painel",
-  description: "Painel de consultas",
+  title: "Painel",
+  description: "Login",
 };
 
 export default function RootLayout({ children }) {
