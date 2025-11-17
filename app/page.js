@@ -1,3 +1,4 @@
+import "./login.css";
 "use client";
 
 import { useState } from "react";
@@ -30,12 +31,14 @@ export default function LoginPage() {
   };
 
   return (
-    <div style={{ padding: "20px", maxWidth: 800, margin: "0 auto" }}>
-      <div className="card-rgb" style={{ padding: "25px", background: "rgba(255,255,255,0.03)" }}>
-        
-        <h1 style={{ fontSize: 35, marginBottom: 20 }}>Entrar</h1>
+    <div className="login-container">
 
-        <p style={{ opacity: 0.7, marginBottom: 20 }}>
+      <div className="card-rgb">
+        <h1 style={{ fontSize: 38, marginBottom: 18, fontWeight: 700 }}>
+          Entrar
+        </h1>
+
+        <p style={{ opacity: 0.7, marginBottom: 25 }}>
           Use seu e-mail e senha para acessar o painel.
         </p>
 
@@ -46,26 +49,26 @@ export default function LoginPage() {
             placeholder="seu@exemplo.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            style={{ marginBottom: 20 }}
           />
 
-          <label>Senha</label>
+          <label style={{ marginTop: 20 }}>Senha</label>
           <input
             type="password"
             placeholder="••••••••"
             value={senha}
             onChange={(e) => setSenha(e.target.value)}
-            style={{ marginBottom: 25 }}
           />
 
-          <button type="submit">Entrar</button>
+          <button type="submit" style={{ marginTop: 30 }}>
+            Entrar
+          </button>
         </form>
 
-        <div style={{ marginTop: 25 }}>
+        <div style={{ marginTop: 30 }}>
           <a href="/register">Criar conta</a>
         </div>
-
       </div>
+
     </div>
   );
 }
