@@ -1,26 +1,50 @@
 "use client";
-
-import Link from "next/link";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Input from "../components/Input";
 import Button from "../components/Button";
-import Header from "../components/Header";
+import { register } from "../lib/api";
 
-export default function RegisterPage() {
+export default function RegisterPage(){
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [msg, setMsg] = useState("");
+
+  const doRegister = async () => {
+    setLoading(true);
+    setMsg("");
+    try {
+      const res = await register(email, senha);
+      if(res && res.id){
+        setMsg("Conta criada. Faça login.");
+        setTimeout(()=>router.push("/"), 900);
+      } else {
+        setMsg(res.error || "Erro ao criar conta");
+      }
+    } catch(e){
+      setMsg("Erro ao conectar");
+    } finally { setLoading(false); }
+  };
+
   return (
-    <main style={{ maxWidth: "500px", margin: "0 auto" }}>
-      <Header />
+    <div style={{ maxWidth:520, margin:"20px auto" }}>
+      <div className="card">
+        <h2 style={{ color:"white", marginBottom:8 }}>Criar conta</h2>
+        <p className="small" style={{ marginBottom:14 }}>Crie seu usuário para começar a consultar.</p>
 
-      <h1>Criar Conta</h1>
+        <Input label="E-mail" value={email} onChange={setEmail} placeholder="seu@exemplo.com" />
+        <Input label="Senha" value={senha} onChange={setSenha} placeholder="••••••" type="password" />
 
-      <form style={{ marginTop: "20px" }}>
-        <Input label="E-mail" type="email" placeholder="seu@exemplo.com" />
-        <Input label="Senha" type="password" placeholder="••••••••" />
-        <Button>Registrar</Button>
-      </form>
+        {msg && <div style={{ color:"var(--neon-pink)", marginBottom:10 }}>{msg}</div>}
 
-      <div style={{ marginTop: "20px" }}>
-        <Link href="/">Voltar ao login</Link>
+        <Button onClick={doRegister} variant="primary">{loading ? "Criando..." : "Criar conta"}</Button>
+
+        <div style={{ marginTop:12 }}>
+          <a href="/" className="btn" style={{ display:"inline-block", padding:"8px 12px" }}>Voltar ao login</a>
+        </div>
       </div>
-    </main>
+    </div>
   );
 }
