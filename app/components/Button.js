@@ -1,14 +1,8 @@
-export default function Button({ children, ...props }) {
+"use client";
+export default function Button({ children, onClick, variant="primary", style }) {
+  const cls = variant === "primary" ? "btn btn-primary" : "btn";
   return (
-    <button
-      style={{
-        background: "#000",
-        color: "#fff",
-        width: "100%",
-        marginTop: "10px"
-      }}
-      {...props}
-    >
+    <button onClick={onClick} className={cls} style={style}>
       {children}
     </button>
   );
